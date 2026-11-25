@@ -1,0 +1,13 @@
+services:
+  bff:
+    build:
+      context: .
+      dockerfile: src/backend/Starter.Bff/Dockerfile
+    ports: ["8080:8080"]
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      AzureAd__TenantId: ${ENTRA_TENANT_ID}
+      AzureAd__ClientId: ${ENTRA_CLIENT_ID}
+      AzureAd__ClientSecret: ${ENTRA_CLIENT_SECRET}
+      AzureAd__CallbackPath: /signin-oidc
+      Bff__CookieName: starter.bff
